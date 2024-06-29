@@ -25,7 +25,7 @@ export function getSearchEnginePath(word: string) {
     case "Google":
       return `https://google.com/search?q=${encodedWord}`;
     case "Bing":
-      return `https://www.bing.com/search?q=${encodedWord}`;
+      return `https://registry.khronos.org/OpenGL-Refpages/gl4/html/${encodedWord}`;
     case "Baidu":
       return `https://www.baidu.com/s?wd=${encodedWord}`;
   }
