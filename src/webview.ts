@@ -22,12 +22,20 @@ function getCurrentWord(): string {
 
 export async function getWvContent(manually: boolean): Promise<string> {
   const word = manually ? "" : getCurrentWord();
-  const path = await getPath(word);
+  let link = "";
+  let path = await getPath(word);
   if (path === null) {
-    vscode.env.openExternal(vscode.Uri.parse(getSearchEnginePath(word)));
-    throw new UserCancelledError();
+    //vscode.env.openExternal(vscode.Uri.parse(getSearchEnginePath(word)));
+    //throw new UserCancelledError();
+    path =
+      "https://registry.khronos.org/OpenGL-Refpages/gl4/html/" +
+      word +
+      ".xhtml";
+    link = path;
+  } else {
+    link = getLink(path);
   }
-  const link = getLink(path);
+
   const invertColor = shouldInvert();
   return `<!DOCTYPE html>
 <meta charset="UTF-8">

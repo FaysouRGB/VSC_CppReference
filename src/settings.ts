@@ -5,11 +5,15 @@ export function getLink(path: string): string {
     .getConfiguration("cppref.alternative")
     .get("enabled");
   if (alternative) {
-    const url = vscode.workspace.getConfiguration("cppref.alternative").get("url")!;
+    const url = vscode.workspace
+      .getConfiguration("cppref.alternative")
+      .get("url")!;
     return url + path;
   } else {
-    const lang: string = vscode.workspace.getConfiguration("cppref").get("lang")!;
-    return `https://${lang}.cppreference.com/w/${path}`
+    const lang: string = vscode.workspace
+      .getConfiguration("cppref")
+      .get("lang")!;
+    return `https://${lang}.cppreference.com/w/${path}`;
   }
 }
 
@@ -25,12 +29,14 @@ export function getSearchEnginePath(word: string) {
     case "Google":
       return `https://google.com/search?q=${encodedWord}`;
     case "Bing":
-      return `https://registry.khronos.org/OpenGL-Refpages/gl4/html/${encodedWord}`;
+      return `https://bing.com/search?q${encodedWord}`;
     case "Baidu":
       return `https://www.baidu.com/s?wd=${encodedWord}`;
   }
 }
 
 export function shouldInvert() {
-  return vscode.workspace.getConfiguration("cppref").get("invertColorInDarkTheme", false);
+  return vscode.workspace
+    .getConfiguration("cppref")
+    .get("invertColorInDarkTheme", false);
 }

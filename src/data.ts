@@ -16,9 +16,11 @@ export async function getPath(word: string): Promise<string | null> {
   if (filtered.length == 1) {
     path = filtered[0].link;
   } else {
+    /*
     interface MyItem extends vscode.QuickPickItem {
       index: number | null;
     }
+    
     const result = await vscode.window.showQuickPick<MyItem>(
       [
         ...filtered.map<MyItem>((e, i) => ({
@@ -38,7 +40,8 @@ export async function getPath(word: string): Promise<string | null> {
     );
     if (typeof result === "undefined") throw new UserCancelledError();
     if (result.index !== null) path = filtered[result.index].link;
-    else path = null;
+    else */
+    path = null;
   }
   return path;
 }
